@@ -1,15 +1,17 @@
 
 let mealplanform = document.forms.mealplanner;
+const DAYSOFWEEK = ["mon", "tue", "wed", "thur", "fri", "sat", "sun"];
+const MEALS = ["breakfast", "snack1", "lunch", "snack2", "dinner"];
 
 
 
 class MealPlanDay {
-    constructor(breakfast, snackam, lunch, snackpm, dinner)
+    constructor(breakfast, snack1, lunch, snack2, dinner )
     {
         this.breakfast = breakfast;
-        this.snackam = snackam;
+        this.snack1 = snack1;
         this.lunch = lunch;
-        this.snackpm = snackpm;
+        this.snack2 = snack2;
         this.dinner = dinner
     }
 }
@@ -26,65 +28,57 @@ class MealPlanWeek {
         this.sun = sun;
     }
 }
+
+window.addEventListener("load", function()
+{
+    for (let day of DAYSOFWEEK)
+  {
+        for (let meal of MEALS){
+
+            let newelem = document.createElement("input");
+            let newlabel = document.createElement("label");
+
+            newelem.setAttribute("type", "text");
+            newelem.setAttribute("name", meal + day)
+
+            newelem.setAttribute("id", meal + day)
+            newlabel.setAttribute("for",meal + day )
+
+            newlabel.innerText = meal + day;
+
+            mealplanform.appendChild(newelem);
+            mealplanform.appendChild(newlabel);
+        }
+  }
+
+    let button = document.createElement("button");
+    button.setAttribute("type", "text");
+    button.setAttribute("id", "mealday");
+    button.textContent = "Submit Meals";
+    mealplanform.appendChild(button);
+
+})
+
+
 let MEALPLAN = new MealPlanWeek
 mealplanform.addEventListener('submit', mealplandata)
 
 
-function mealplandata(){
-    
-    let breakfast = document.getElementsByClassName("breakfast");
-    let snackam = document.getElementById("snackam");
-    let lunch = document.getElementById("lunch");
-    let snackpm = document.getElementById("snackpm");
-    let dinner = document.getElementById("dinner");
+function mealplandata()
+{
+    for (let day of DAYSOFWEEK)
+    {
+        let mealPlanDay = new MealPlanDay();
+        for (let meal of MEALS)
+        {
+            let mealelem = document.getElementById(meal + day);
+            mealPlanDay[meal] = mealelem.value;
+        
+        MEALPLAN[day] = mealPlanDay;
+    }    
 
-    let breakfastdata = breakfast.value;
-    let snackamdata = snackam.value;
-    let lunchdata = lunch.value;
-    let snackpmdata = snackpm.value;
-    let dinnerdata = dinner.value;
-
-
-    let mealplanday = new MealPlanDay(breakfastdata, snackamdata, lunchdata, snackpmdata, dinnerdata);
-   
-    buildmealplan(mealplanday);
-   
 }
 
-// function buildmealplan(mealplanday, dayofweek){
-
-    
-//     if (dayofweek == "Monday")
-//     {
-//         MEALPLAN.mon = mealplanday;
-//     }
-//     else if (dayofweek == "Tuesday")
-//     {
-//         MEALPLAN.tue = mealplanday;
-//     }
-//     else if (dayofweek == "Wednesday")
-//     {
-//         MEALPLAN.wed = mealplanday;
-//     }
-//     else if (dayofweek == "Thursday")
-//     {
-//         MEALPLAN.thur = mealplanday;
-//     }
-//     else if (dayofweek == "Friday")
-//     {
-//         MEALPLAN.fri = mealplanday;
-//     }
-//     else if (dayofweek == "Saturday")
-//     {
-//         MEALPLAN.sat = mealplanday;
-//     }
-//     else if (dayofweek == "Sunday")
-//     {
-//         MEALPLAN.sun = mealplanday;
-//     }
-
-    
-
-// }
 
 
+}
