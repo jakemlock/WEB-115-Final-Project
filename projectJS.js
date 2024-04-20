@@ -1,7 +1,11 @@
 
 let mealplanform = document.forms.mealplanner;
+const DAYSOFWEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+const daysuffixes =  ["mon", "tue", "wed", "thur", "fri", "sat", "sun"];
+const MEALS = ["breakfast", "snackam", "lunch", "snackpm", "dinner"];
 
-let dayofweek = document.getElementById("dayofweek")
+let dayofweek = document.getElementById("dayofweek");
+let createmealplan = document.getElementById('createmealplan');
 
 class MealPlanDay {
     constructor(breakfast, snackam, lunch, snackpm, dinner)
@@ -26,8 +30,15 @@ class MealPlanWeek {
         this.sun = sun;
     }
 }
-let mealplan = new MealPlanWeek;
+let mealplan = new MealPlanWeek("","","","","","","");
 mealplanform.addEventListener('submit', mealplandata);
+let creatmealplan = document.getElementById('createmealplan')
+creatmealplan.addEventListener('click',mealplanwindow)
+
+
+
+
+
 
 
 function mealplandata(event){
@@ -47,44 +58,47 @@ function mealplandata(event){
 
 
     let mealplan = new MealPlanDay(breakfastdata, snackamdata, lunchdata, snackpmdata, dinnerdata);
-    let dayofweekdata = dayofweek.value
+    let dayofweekdata = dayofweek.value;
     buildmealplan(mealplan, dayofweekdata);
+    
    
 }
 
 function buildmealplan(mealplanday, dayofweek){
 
-   
-    if (dayofweek == "Monday")
-    {
-        mealplan.mon = mealplanday;
-    }
-    else if (dayofweek == "Tuesday")
-    {
-        mealplan.tue = mealplanday;
-    }
-    else if (dayofweek == "Wednesday")
-    {
-        mealplan.wed = mealplanday;
-    }
-    else if (dayofweek == "Thursday")
-    {
-        mealplan.thur = mealplanday;
-    }
-    else if (dayofweek == "Friday")
-    {
-        mealplan.fri = mealplanday;
-    }
-    else if (dayofweek == "Saturday")
-    {
-        mealplan.sat = mealplanday;
-    }
-    else if (dayofweek == "Sunday")
-    {
-        mealplan.sun = mealplanday;
-    }
+   switch(dayofweek)
+   {
+    case "Monday": mealplan.mon = mealplanday; break;
+    case "Tuesday": mealplan.tue = mealplanday; break;
+    case "Wednesday": mealplan.wed = mealplanday; break;
+    case "Thursday": mealplan.thur = mealplanday; break;
+    case "Friday":  mealplan.fri = mealplanday; break;
+    case "Saturday": mealplan.sat = mealplanday; break;
+    case "Sunday": mealplan.sun = mealplanday; break;
 
+   }
     console.log(mealplan)
-    return mealplan
+    
+}
 
+
+function mealplanwindow()
+{
+    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n</head>\n<body>\n<table><td>");
+    for (let meal of MEALS)
+    {
+        mealplantext += "<tr>" 
+        for (let day of daysuffixes)
+        {
+
+            mealplantext += "<td>\n";
+            mealplantext += "meal go here - " + day
+            mealplantext += "</td>\n";
+        } 
+        mealplantext += "</tr>\n"
+    }
+    mealplantext += ("</td>\n</table>\n</body>\n</html>");
+
+    mealplanwindow = window.open('about:blank','','width=1000,height=600,left=800,top=800');
+    mealplanwindow.document.write(mealplantext);
 }
