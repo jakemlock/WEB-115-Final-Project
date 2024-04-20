@@ -92,7 +92,7 @@ function mealplanwindow()
         {
 
             mealplantext += "<td>\n";
-            mealplantext += "meal go here - " + day
+            mealplantext +=  mealplan[day][meal];
             mealplantext += "</td>\n";
         } 
         mealplantext += "</tr>\n"
