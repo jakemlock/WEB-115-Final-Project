@@ -3,8 +3,8 @@ let mealplanform = document.forms.mealplanner;
 const DAYSOFWEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const MEALS = ["Breakfast", "SnackAM", "Lunch", "SnackPM", "Dinner"];
 
-let dayofweek = document.getElementById("dayofweek");
-let createmealplan = document.getElementById('createmealplan');
+
+
 
 class MealPlanDay {
     constructor(Breakfast, SnackAM, Lunch, SnackPM, Dinner)
@@ -29,14 +29,17 @@ class MealPlanWeek {
         this.Sunday = sun;
     }
 }
+
+
+let dayofweek = document.getElementById("dayofweek");
+let createmealplan = document.getElementById('createmealplan');
+let clearbutton = document.getElementById("clearmealplan");
+
 let mealplan = new MealPlanWeek("","","","","","","");
+
 mealplanform.addEventListener('submit', mealplandata);
-let creatmealplan = document.getElementById('createmealplan')
-creatmealplan.addEventListener('click',mealplanwindow)
-
-
-
-
+createmealplan.addEventListener('click',validateEmail);
+clearbutton.addEventListener('click', clearmealplan);
 
 
 
@@ -85,9 +88,19 @@ function buildmealplan(mealplanday, dayofweek){
 
 function mealplanwindow()
 {
-    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n</head>\n<body>\n<table><td>");
+    let emaildata = document.getElementById('email').value;
+        
+
+    let namedata = document.getElementById('name').value;
+   
+
+    let goaldata = document.getElementById('goal').value;
+
+    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n</head>\n<body>\n<table>");
     for (let meal of MEALS)
     {
+       
+
         mealplantext += "<tr>" 
         for (let day of DAYSOFWEEK)
         {
@@ -101,8 +114,41 @@ function mealplanwindow()
         } 
         mealplantext += "</tr>\n"
     }
-    mealplantext += ("</td>\n</table>\n</body>\n</html>");
+    mealplantext += "</table>\n"
+    mealplantext += "<div id = 'user'>" + "Name: "+ namedata + "</div> <br>"
+    mealplantext += "<div id = 'useremail'>" + "Email: "+ emaildata + "</div> <br>"
+    mealplantext += "<div id = 'usergoal'>" + "Your goal for the week: "+ goaldata + "</div> <br>"
+    mealplantext += ("</body>\n</html>");
 
     mealplanwindow = window.open('about:blank','','width=1000,height=500,left=1000,top=800');
     mealplanwindow.document.write(mealplantext);
+    
+}
+
+
+function validateEmail(event)
+{
+    let email = document.getElementById('email');
+    let emailpattern = /^([a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/;
+    let emailvalue = email.value;
+
+    if (!emailpattern.test(emailvalue))
+    {
+        window.alert("Please submit a valid email.");
+        event.preventDefault();
+    }
+    else
+    {
+        mealplanwindow();
+    }
+
+
+}
+
+
+function clearmealplan(event)
+{
+    event.preventDefault();
+    mealplan = new MealPlanWeek("","","","","","","");
+    window.alert('Your Meal Plan has been cleared!')
 }
