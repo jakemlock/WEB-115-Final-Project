@@ -17,8 +17,41 @@
 </header>
 
     <form id = 'mealplanner'>
-       
-    </form>
+        <label for="dayofweek">Pick the day of the week</label>
+        <select name ="dayofweek" id = 'dayofweek'>
+                    <option value = "Monday" selected> Monday</option>
+                    <option value = "Tuesday"> Tuesday </option>
+                    <option value = "Wednesday"> Wednesday </option>
+                    <option value = "Thursday"> Thursday </option>
+                    <option value = "Friday"> Friday </option>
+                    <option value = "Saturday"> Saturday</option>
+                    <option value = "Sunday"> Sunday </option>
+        </select>
+        <br>
+
+        <label for="breakfast">Enter your breakfast:</label>
+        <input type="text" id="breakfast" name="breakfast">
+        <br>
+                
+
+        <label for="snackam">Enter a snack for before Lunch:</label>
+        <input type="text" id="snackam" name="snackam">
+        <br>
+
+        <label for="lunch">Enter your lunch:</label>
+        <input type="text" id="lunch" name="lunch">
+        <br>
+
+        <label for="snackpm">Enter your snack for after Lunch:</label>
+        <input type="text" id="snackpm" name="snackpm">
+        <br>
+
+        <label for="dinner">Enter your dinner:</label>
+        <input type="text" id="dinner" name="dinner">
+        <br>
+
+        <button type="submit" id = 'mealday'>Submit Meal for the day</button>
+        </form>
 
           
 </body>
