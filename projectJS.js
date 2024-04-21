@@ -96,7 +96,8 @@ function mealplanwindow()
 
     let goaldata = document.getElementById('goal').value;
 
-    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n</head>\n<body>\n<table>");
+    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script></head>\n<body>\n<table>");
+
     for (let meal of MEALS)
     {
        
@@ -114,10 +115,11 @@ function mealplanwindow()
         } 
         mealplantext += "</tr>\n"
     }
-    mealplantext += "</table>\n"
-    mealplantext += "<div id = 'user'>" + "Name: "+ namedata + "</div> <br>"
-    mealplantext += "<div id = 'useremail'>" + "Email: "+ emaildata + "</div> <br>"
-    mealplantext += "<div id = 'usergoal'>" + "Your goal for the week: "+ goaldata + "</div> <br>"
+    mealplantext += "</table><br>\n"
+    mealplantext += "<div id = 'user'>" + "<b>Name:</b> "+ namedata + "</div>\n"
+    mealplantext += "<div id = 'useremail'>" + "<b>Email:</b> "+ emaildata + "</div>\n"
+    mealplantext += "<div id = 'usergoal'>" + "<b>Your goal for the week:</b> "+ goaldata + "</div>\n"
+    mealplantext += "<button onclick ='printmealplan()'>Print Meal Plan </button>"
     mealplantext += ("</body>\n</html>");
 
     mealplanwindow = window.open('about:blank','','width=1000,height=500,left=1000,top=800');
