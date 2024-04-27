@@ -161,12 +161,13 @@ label {
 
   p#userinfo
   {
-    text-align: center;
+    margin: auto;
+    
+    
   }
 
   button#print
   {
-    border:1px solid rgb(231,207,171);
     margin:auto;
     display: block;
     border:1px solid rgb(231,207,171);
@@ -174,20 +175,20 @@ label {
    
   }
 
-  
-
   @media print {
     button#print {
         display: none;
     }
 }
 
-th#mealplanheading
+h1#mealplanheading
 {
+    margin: auto;
     text-align: center;
     font-size: 50px;
     width: 400px;
     height: 50px;
     text-decoration: none;
+    color: rgba(231,207,171,255);
     
 }

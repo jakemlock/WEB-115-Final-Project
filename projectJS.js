@@ -104,7 +104,7 @@ function mealplanwindow()
 
     let goaldata = document.getElementById('goal').value;
 
-    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script><link rel='stylesheet' href='projectJS.css'></head>\n<body>\n<table><th id = 'mealplanheading' >Your Meal Plan</th>");
+    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script><link rel='stylesheet' href='projectJS.css'></head>\n<body>\n<table><h1 id = 'mealplanheading' >Your Meal Plan</h1>");
 
     for (let meal of MEALS)
     {
