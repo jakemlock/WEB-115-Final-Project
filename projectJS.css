@@ -1,0 +1,68 @@
+
+
+html
+{
+
+    background-color: rgb(138, 181, 138);
+    
+}
+body
+{
+   margin: auto; 
+}
+
+header > img
+{
+    display: block;
+    width: 1000px;
+    height: 250px;
+    margin: auto;
+    border-radius: 15px;
+
+}
+
+form#mealplanner
+{
+   
+    color: beige;
+    background-color: rgb(63, 90, 63);
+    width: 600px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    margin: auto;
+    border-radius: 15px;
+    text-align: center;
+    text-shadow: 1px 1px black;
+}
+
+form#userinfoform
+{
+    text-align: center;
+    color: beige;
+    background-color: rgb(124, 182, 124);
+    width: 400px;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    border-radius: 15px;
+    text-shadow: 1px 1px black;
+}
+
+button
+{
+    border-radius: 5px;
+}
+input
+{
+    border-radius: 5px;
+    align-self: right
+}
+select
+{
+    border-radius: 5px;
+}
+label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+  }
