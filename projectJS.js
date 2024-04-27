@@ -40,7 +40,7 @@ let mealplan = new MealPlanWeek("","","","","","","");
 mealplanform.addEventListener('submit', mealplandata);
 createmealplan.addEventListener('click',validateEmail);
 clearbutton.addEventListener('click', clearmealplan);
-
+let Index = dayofweek.selectedIndex = 0;
 
 
 function mealplandata(event){
@@ -62,8 +62,16 @@ function mealplandata(event){
     let mealplan = new MealPlanDay(breakfastdata, snackamdata, lunchdata, snackpmdata, dinnerdata);
     let dayofweekdata = dayofweek.value;
     buildmealplan(mealplan, dayofweekdata);
-
     mealplanform.reset();
+
+    Index += 1;
+    if (Index >= 7)
+    {
+        Index = 0;
+    }
+
+    dayofweek.selectedIndex = Index;
+    
     
    
 }
@@ -96,7 +104,7 @@ function mealplanwindow()
 
     let goaldata = document.getElementById('goal').value;
 
-    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script></head>\n<body>\n<table>");
+    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script><link rel='stylesheet' href='projectJS.css'></head>\n<body>\n<table><th id = 'mealplanheading' >Your Meal Plan</th>");
 
     for (let meal of MEALS)
     {
@@ -116,10 +124,7 @@ function mealplanwindow()
         mealplantext += "</tr>\n"
     }
     mealplantext += "</table><br>\n"
-    mealplantext += "<div id = 'user'>" + "<b>Name:</b> "+ namedata + "</div>\n"
-    mealplantext += "<div id = 'useremail'>" + "<b>Email:</b> "+ emaildata + "</div>\n"
-    mealplantext += "<div id = 'usergoal'>" + "<b>Your goal for the week:</b> "+ goaldata + "</div>\n"
-    mealplantext += "<button onclick ='printmealplan()'>Print Meal Plan </button>"
+    mealplantext += "<p id = 'userinfo'>" + "<b>Name:</b> "+ namedata + "<br>" + "<b>Email:</b> "+ emaildata + "<br>"+"<b>Your goal for the week:</b> "+ goaldata +"<br> <button id ='print' onclick ='printmealplan()'>Print Meal Plan </button> "+"</p>\n"
     mealplantext += ("</body>\n</html>");
 
     mealplanwindow = window.open('about:blank','','width=1000,height=500,left=1000,top=800');
