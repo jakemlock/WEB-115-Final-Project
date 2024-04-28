@@ -104,8 +104,7 @@ function mealplanwindow()
 
     let goaldata = document.getElementById('goal').value;
 
-    mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script><link rel='stylesheet' href='projectJS.css'></head>\n<body>\n<table><h1 id = 'mealplanheading' >Your Meal Plan</h1>");
-
+    let mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script><link rel='stylesheet' href='projectJS.css'></head>\n<body>\n<table id = 'mealplantable'><h1 id = 'mealplanheading' >Your Meal Plan</h1>");
     for (let meal of MEALS)
     {
        
@@ -115,10 +114,20 @@ function mealplanwindow()
         {
             if (mealplan[day][meal] != undefined)
             {
-                mealplantext += "<th>" + day + " " +  meal + "</th>";
-                mealplantext += "<td>\n";
-                mealplantext +=  mealplan[day][meal];
-                mealplantext += "</td>\n";
+                if (meal == 'Breakfast')
+                {
+                    mealplantext += "<th><u>" + day + "</u> " +  meal + "</th>";
+                    mealplantext += "<td>\n";
+                    mealplantext +=  mealplan[day][meal];
+                    mealplantext += "</td>\n";
+                }
+                else
+                {
+                    mealplantext += "<th>" + " " +  meal + "</th>";
+                    mealplantext += "<td>\n";
+                    mealplantext +=  mealplan[day][meal];
+                    mealplantext += "</td>\n";
+                }
             }
         } 
         mealplantext += "</tr>\n"
@@ -127,7 +136,7 @@ function mealplanwindow()
     mealplantext += "<p id = 'userinfo'>" + "<b>Name:</b> "+ namedata + "<br>" + "<b>Email:</b> "+ emaildata + "<br>"+"<b>Your goal for the week:</b> "+ goaldata +"<br> <button id ='print' onclick ='printmealplan()'>Print Meal Plan </button> "+"</p>\n"
     mealplantext += ("</body>\n</html>");
 
-    mealplanwindow = window.open('about:blank','','width=1000,height=500,left=1000,top=800');
+    mealplanwindow = window.open('about:blank','','width=1450,height=800');
     mealplanwindow.document.write(mealplantext);
     
 }

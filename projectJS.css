@@ -56,9 +56,6 @@ form#userinfoform
    
 }
 
-
-
-
 select
 {
     border-radius: 5px;
@@ -128,7 +125,7 @@ label {
     
   }
 
-  table,div
+  table
   {
     font-size: 18px;
     text-align: center;
@@ -141,6 +138,7 @@ label {
     padding-bottom: 20px;
     border-radius: 15px;
     border:1px solid rgb(231,207,171);
+   
     
   }
 
@@ -149,21 +147,21 @@ label {
     margin: 5px;
     font-size: 20px;
     color: rgba(231,207,171,255);
-    text-decoration: underline rgb(231,207,171) ;
+    
   }
+
   td
   {
-    border:1px solid rgb(231,207,171);
+    
     border-radius: 2px;
     margin-right: 4px;
+    border:1px solid rgb(231,207,171);
 
   }
 
   p#userinfo
   {
     margin: auto;
-    
-    
   }
 
   button#print
@@ -192,3 +190,5 @@ h1#mealplanheading
     color: rgba(231,207,171,255);
     
 }
+
+
