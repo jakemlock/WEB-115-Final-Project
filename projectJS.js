@@ -116,14 +116,14 @@ function mealplanwindow()
             {
                 if (meal == 'Breakfast')
                 {
-                    mealplantext += "<th><u>" + day + "</u> " +  meal + "</th>";
+                    mealplantext += "<th><u>" + day + "</u> " +  meal + ": </th>";
                     mealplantext += "<td>\n";
                     mealplantext +=  mealplan[day][meal];
                     mealplantext += "</td>\n";
                 }
                 else
                 {
-                    mealplantext += "<th>" + " " +  meal + "</th>";
+                    mealplantext += "<th>" + " " +  meal + ": </th>";
                     mealplantext += "<td>\n";
                     mealplantext +=  mealplan[day][meal];
                     mealplantext += "</td>\n";
