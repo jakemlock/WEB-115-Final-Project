@@ -192,3 +192,7 @@ h1#mealplanheading
 }
 
 
+td#fill
+{
+  border: none;
+}

@@ -1,5 +1,6 @@
 
 let mealplanform = document.forms.mealplanner;
+let userinfoform = document.forms.userinfoform;
 const DAYSOFWEEK = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 const MEALS = ["Breakfast", "SnackAM", "Lunch", "SnackPM", "Dinner"];
 
@@ -107,8 +108,6 @@ function mealplanwindow()
     let mealplantext = ("<html>\n<head>\n<title>Meal Plan</title>\n <script>function printmealplan(){window.print();}</script><link rel='stylesheet' href='projectJS.css'></head>\n<body>\n<table id = 'mealplantable'><h1 id = 'mealplanheading' >Your Meal Plan</h1>");
     for (let meal of MEALS)
     {
-       
-
         mealplantext += "<tr>" 
         for (let day of DAYSOFWEEK)
         {
@@ -116,17 +115,34 @@ function mealplanwindow()
             {
                 if (meal == 'Breakfast')
                 {
-                    mealplantext += "<th><u>" + day + "</u> " +  meal + ": </th>";
+                    mealplantext += " <th> </th>" + "<th><u>" + day + "</u></th>";
+                }
+            
+            }
+        } 
+        mealplantext += "</tr>\n"
+    }
+    for (let meal of MEALS)
+    {
+       
+
+        mealplantext += "<tr>" 
+        for (let day of DAYSOFWEEK)
+        {
+            if (mealplan[day][meal] != undefined)
+            {
+                if (day == 'Monday')
+                {
+                    mealplantext += "<th> "+  meal + ": </th>";
                     mealplantext += "<td>\n";
                     mealplantext +=  mealplan[day][meal];
-                    mealplantext += "</td>\n";
+                    mealplantext += "</td>\n <td id = 'fill'> </td>\n";
                 }
                 else
                 {
-                    mealplantext += "<th>" + " " +  meal + ": </th>";
                     mealplantext += "<td>\n";
                     mealplantext +=  mealplan[day][meal];
-                    mealplantext += "</td>\n";
+                    mealplantext += "</td>\n<td id = 'fill'> </td>\n";
                 }
             }
         } 
@@ -166,5 +182,7 @@ function clearmealplan(event)
 {
     event.preventDefault();
     mealplan = new MealPlanWeek("","","","","","","");
+    mealplanform.reset();
+    userinfoform.reset();
     window.alert('Your Meal Plan has been cleared!')
 }
